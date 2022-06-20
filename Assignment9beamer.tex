@@ -1,0 +1,93 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\title{Assignment9}
+\author{NIMMALA AVINASH(CS21BTECH11039)}
+\institute{IITH}
+\date{\today}
+\logo{\large}
+
+\begin{document}
+\begin{large}
+\maketitle
+\begin{frame}{Subsections}
+\begin{itemize}
+\item Question
+\item Solution
+\end{itemize}
+\end{frame}
+\begin{frame}
+{\LARGE \textbf{Question:\\}}
+Show that if X(t) is BL as in and $\Delta$ = 2$\pi$/$\sigma$,then\\
+\begin{align}
+X(t) = 4 \sin^{2}{\frac{\sigma t}{2}} \sum_{n=-\infty}^{\infty}[\frac{X(n\Delta)}{(\sigma t - 2n\pi)^{2}} + \frac{X'(n\Delta)}{\sigma(\sigma t - 2n\pi)}]
+\end{align}
+\end{frame}
+\begin{frame}{Solution}
+    From Papoulis sampling expansion ,if we have N functions such as $P_{1}$($ \omega $,t),$ \cdots $ $P_{N}$($ \omega $,t) such that//
+\begin{align}
+H_{1}(\omega)P_{1}(\omega,\tau)+\cdots +H_{N}(\omega)P_{N}(\omega,\tau) &= 1\\
+H_{1}(\omega+c)P_{1}(\omega,\tau)+\cdots +H_{N}(\omega+c)P_{N}(\omega,\tau) &= e^{jc\tau}
+\end{align}
+\end{frame}
+\begin{frame}
+W.K.T \\
+N = 2,$H_{1}(\omega) = 1,H_{2}(\omega) = j\omega,c = \sigma$
+\begin{align}
+H_{1}(\omega)P_{1}(\omega,\tau)+H_{2}(\omega)P_{2}(\omega,\tau) &= 1\\
+H_{1}(\omega+\sigma)P_{1}(\omega,\tau)+H_{2}(\omega+\sigma)P_{2}(\omega,\tau)&= e^{j\sigma\tau}\\
+\implies P_{1}(\omega ,\tau) + j\omega P_{2}(\omega + \sigma) = 1\\
+P_{1}(\omega,\tau)+j(\omega+\sigma)P_{2}(\omega,\tau) = e^{j\sigma\tau}\\
+\implies P_{1}(\omega,\tau) = 1 - \frac{\omega}{\sigma}(e^{j\sigma\tau}-1)\\
+P_{2}(\omega,\tau)  \frac{1}{j\sigma}(e^{j\sigma\tau}-1)\\
+\end{align}
+\end{frame}
+\begin{frame}{Solution}
+\begin{align}
+    p_{k}(\tau) = \frac{1}{\sigma}\int_{-\sigma}^{0} P_{k}(\omega,\tau)e^{j\omega\tau}d\omega  \cdots
+    where k = 1 \\
+    \implies p_{1}(\tau) = \frac{1}{\sigma}\int_{-\sigma}^{0}p_{1}(\omega,\tau)e^{j\omega\tau}d\omega\\
+    \implies p_{1}(\tau) = 
+    \frac{1}{\sigma}\int_{-\sigma}^{0}(1-\frac{\omega}{\sigma}(e^{j\sigma\tau}-1))e^{j\omega\tau}d\omega\\
+    \implies p_{1}(\tau) =
+    \frac{1}{\sigma}(\frac{e^{j\omega\tau}}{j\tau})_{-\sigma}^{0}-(\frac{e^{j\sigma\tau}-1}{\sigma^{2}})\int_{-\sigma}^{0}e^{j\omega\tau}\omega d\omega\\
+    \end{align}
+    after integrating we get\\
+    \end{frame}
+    \begin{frame}
+    \begin{align}
+    p_{1}(\tau) &= \frac{2-2\cos(\sigma\tau)}{\sigma^{2}\tau^{2}}\\
+    p_{1}(\tau) &= \frac{4\sin^{2}(\sigma\tau /2)}{\sigma^{2}\tau^{2}}\\
+    similarly,   p_{2} (\tau)&=  \frac{4\sin^{2}(\sigma\tau /2)}{\sigma^{2}\tau}\\
+  x(t+\tau) &= \sum_{n = -\infty}^{\infty}[y_{1}(t+nNT)P_{1}(\tau - nNT)+\cdots\\&\cdots+y_{N}(t+nNT)p_{N}(\tau - nNT)]\\
+  with t &= 0,N = 2,P_{1} and P_{2},\\\tau &= t -   nT ,T = 2\pi /\sigma ,\Delta = 2\pi /\sigma
+  \end{align}
+  \end{frame}
+  \begin{frame}{Solution}
+  \begin{align}
+  x(\tau) &= \sum_{n = -\infty}^{\infty}[{x(n\Delta)}P_{1}(\tau)+{x'(n\Delta)}P_{2}(\tau)]\\
+  W.K.T,
+    p_{1}(\tau) &= \frac{4\sin^{2}(\sigma\tau /2)}{\sigma^{2}\tau^{2}}\\
+     p_{2} (\tau)&=  \frac{4\sin^{2}(\sigma\tau /2)}{\sigma^{2}\tau}\\
+  x(\tau) &= \sum_{n=-\infty}^{\infty}[x(n\Delta)\frac{4\sin^{2}(\sigma\tau /2)}{\sigma^{2}\tau^{2}}+x'(n\Delta)\frac{4\sin^{2}(\sigma\tau /2)}{\sigma^{2}\tau}] \\
+  \tau &= t - nT = t - 2n\pi/\sigma \implies \tau\sigma = \sigma t - 2n\pi\\
+\end{align}
+\end{frame}
+\begin{frame}{Solution:}
+    \begin{align}
+    x(\tau) = 4\sin^{2}(\frac{\sigma\tau}{2})\sum_{n = -\infty}^{\infty}[\frac{x(n\Delta)}{(\sigma t-2n\pi)^{2}}+\frac{x'(n\Delta)}{\sigma(\sigma t - 2n\pi)}]
+\end{align}
+$$Hence Proved$$
+\end{frame}
+\end{large}
+\end{document}
+
+
+
+
+
+
